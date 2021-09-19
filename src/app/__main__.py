@@ -1,6 +1,7 @@
+import json
+
 import requests
 
-# from app.api import OptiComParser
 from api import OptiComParser
 
 
@@ -18,12 +19,16 @@ def dump_all_products(parser: OptiComParser):
 
 
 def load_all_products(parser: OptiComParser):
+    data = []
     with open("products.txt", "r", encoding="UTF-8") as file:
         for line in file.readlines():
             product_id = int(line.strip())
             product_dict = parser.parse_product(product_id)
             print(product_dict)
-            break
+            data.append(product_dict)
+
+    with open("products.json", "w", encoding="UTF-8") as file:
+        json.dump(data, file, ensure_ascii=False, indent=4)
 
 
 def main():
