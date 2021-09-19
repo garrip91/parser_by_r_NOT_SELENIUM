@@ -1,0 +1,5 @@
+Часть ссылки из JSON:
+    452b58ce594df755e4f29cf687df8afc.jpg
+
+Полная ссылка:
+    https://files.opti-com.ru//products/medium/452b58ce594df755e4f29cf687df8afc.jpg
