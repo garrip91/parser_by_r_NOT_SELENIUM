@@ -33,19 +33,19 @@ class OptiComParser:
 
         product_dict = {
             "id": product_id,
-            "title": product_data["product"].get("title"),
-            "price": product_data["product"].get("price"),
-            "article": product_data["product"].get("article"),
-            "quantity": product_data["product"].get("quantity"),
-            "available": product_data["product"].get("isavailable"),
-            "attributes": {attr['title']: attr['value'] for attr in product_data.get("attributes", [])},
-            "about": product_data["product"].get("about"),
-            "certificates": [certificate["path"] for certificate in product_data.get("certificates", [])],
-            "images": [image["image"] for image in product_data["product"].get("images", [])],
+            "title": product_data["product"].get("title"), # Заголовок товара
+            "price": product_data["product"].get("price"), # Цена товара
+            "article": product_data["product"].get("article"), # Артикул
+            "quantity": product_data["product"].get("quantity"), # Количество товара на складе
+            "available": product_data["product"].get("isavailable"), # Доступность товара (можно ли заказать товар (в наличии или нет))
+            "attributes": {attr['title']: attr['value'] for attr in product_data.get("attributes", [])}, # Характеристики товара
+            "about": product_data["product"].get("about"), # "О товаре"
+            "certificates": [certificate["path"] for certificate in product_data.get("certificates", [])], # Типа техпаспорта товара
+            "images": [image["image"] for image in product_data["product"].get("images", [])], # Фотоальбом товара
         }
 
         if product_data["product"].get("full"):
-            product_dict["description"] = [desc["content"] for desc in product_data["product"]["full"]]
+            product_dict["description"] = [desc["content"] for desc in product_data["product"]["full"]] # Описание товара
 
         return product_dict
 

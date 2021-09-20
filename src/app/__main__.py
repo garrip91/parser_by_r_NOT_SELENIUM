@@ -27,14 +27,30 @@ def load_all_products(parser: OptiComParser):
             product_id = int(line.strip())
             product_dict = parser.parse_product(product_id)
             data.append(product_dict)
-
-            print(
-                product_dict["id"], product_dict["title"],
-                product_dict["price"], product_dict["quantity"]
+            
+            console_line = " || ".join(
+                [
+                    str(product_dict['id']),
+                    product_dict['title'],
+                    str(product_dict['price']),
+                    str(product_dict['quantity'])
+                ]
             )
+
+            # print(
+                # product_dict["id"], product_dict["title"],
+                # product_dict["price"], product_dict["quantity"],
+                # sep=" || "
+            # )
+            
+            print(console_line)
+            with open('data.txt', 'a', encoding='UTF-8') as output:
+                output.write(console_line + "\n")
 
             with open("products.json", "w", encoding="UTF-8") as output:
                 json.dump(data, output, ensure_ascii=False, indent=4)
+            with open("products_data.txt", "a", encoding="UTF-8") as output:
+                output.write(F'')
 
 
 def main():
