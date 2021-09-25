@@ -30,10 +30,10 @@ def load_all_products(parser: OptiComParser):
             
             console_line = " || ".join(
                 [
-                    str(product_dict['id']),
-                    product_dict['title'],
-                    str(product_dict['price']),
-                    str(product_dict['quantity'])
+                    str(product_dict['id']), # id
+                    product_dict['title'], # название
+                    str(product_dict['price']), # цена
+                    str(product_dict['quantity']) # количество
                 ]
             )
 
