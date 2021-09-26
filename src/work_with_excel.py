@@ -1,10 +1,26 @@
 import openpyxl
-from openpyxl.styles import Font, Alignment
+from openpyxl.styles import Font, Alignment, NamedStyle, Border, Side
 
 
 book = openpyxl.Workbook()
 sheets = book.sheetnames
 sheet = book[sheets[0]]
+
+# ТОЛСТЫЕ ГРАНИЦЫ:
+thick_border = Border(
+    left=Side(style='thick'), 
+    right=Side(style='thick'), 
+    top=Side(style='thick'), 
+    bottom=Side(style='thick')
+)
+
+# ТОНКИЕ ГРАНИЦЫ:
+thin_border = Border(
+    left=Side(style='thin'), 
+    right=Side(style='thin'), 
+    #top=Side(style='thin'), 
+    bottom=Side(style='thin')
+)
 
 sheet['A1'] = "№ П/П"
 sheet['A1'].font = Font(bold=True)
@@ -18,24 +34,43 @@ sheet['C1'] = "НАЗВАНИЕ ТОВАРА"
 sheet['C1'].font = Font(bold=True)
 sheet['C1'].alignment = Alignment(horizontal='center')
 sheet.column_dimensions['C'].width = 20
-sheet['D1'] = "ЦЕНА ТОВАРА (руб.)"
+######
+sheet['D1'] = "КОД ТОВАРА"
 sheet['D1'].font = Font(bold=True)
 sheet['D1'].alignment = Alignment(horizontal='center')
 sheet.column_dimensions['D'].width = 20
-sheet['E1'] = "КОЛИЧЕСТВО ТОВАРА (шт./упак.)"
+######
+sheet['E1'] = "ЦЕНА ТОВАРА (руб.)"
 sheet['E1'].font = Font(bold=True)
 sheet['E1'].alignment = Alignment(horizontal='center')
-sheet.column_dimensions['E'].width = 35
+sheet.column_dimensions['E'].width = 20
+sheet['F1'] = "КОЛИЧЕСТВО ТОВАРА (шт./упак.)"
+sheet['F1'].font = Font(bold=True)
+sheet['F1'].alignment = Alignment(horizontal='center')
+sheet.column_dimensions['F'].width = 35
 
-# sheet['F1'] = "ТЕКСТ ТЕКСТ ТЕКСТ ТЕКСТ ТЕКСТ ТЕКСТ"
-# sheet['F1'].alignment = Alignment(wrap_text=True)
+sheet.freeze_panes = 'A2'
 
+area = [
+    sheet['A1'],
+    sheet['B1'],
+    sheet['C1'],
+    sheet['D1'],
+    sheet['E1'],
+    sheet['F1']
+]
 
-with open('data.txt', 'r', encoding='UTF-8') as source:
+################# ГРАНИЦЫ ЗАГОЛОВОЧНОЙ СТРОКИ: #################
+for cell in area:
+    cell.border = thick_border
+################################################################
+
+# with open('data.txt', 'r', encoding='UTF-8') as source:
+with open('data_for_check.txt', 'r', encoding='UTF-8') as source:
     #print(source.readlines())
     
     nums = 2
-    letters = ['A', 'B', 'C', 'D', 'E']
+    letters = ['A', 'B', 'C', 'D', 'E', 'F']
     n_p_p = 1
     nums_insert = 1
     for line in source:
@@ -64,8 +99,8 @@ with open('data.txt', 'r', encoding='UTF-8') as source:
         sheet[F'A{n}'].font = Font(bold=True)
         n += 1
         
-################################################################        
-################################################################      
+    ################################################################        
+    ################################################################      
     del nums
     del letters
     del n_p_p
@@ -73,7 +108,7 @@ with open('data.txt', 'r', encoding='UTF-8') as source:
     del letters_index
 
     nums = 2
-    letters = ['A', 'B', 'C', 'D', 'E']
+    letters = ['A', 'B', 'C', 'D', 'E', 'F']
     n_p_p = 1
     nums_insert = 1
     for i in range(sheet.max_row):
@@ -85,32 +120,20 @@ with open('data.txt', 'r', encoding='UTF-8') as source:
             #sheet[F'{letters[letters_index]}{nums}'].alignment = Alignment(vertical='center')
             letters_index += 1
         nums += 1
-################################################################        
-################################################################
-
-################################################################        
-################################################################      
-    # del nums
-    # del letters
-    # del n_p_p
-    # del nums_insert
-    # del letters_index
-
-    # nums = 2
-    # letters = ['A', 'B', 'C', 'D', 'E']
-    # n_p_p = 1
-    # nums_insert = 1
-    # for i in range(sheet.max_row):
-        # nums_insert += 1
-        # letters_index = 0
-        # for j in range(sheet.max_column):
-            # #sheet[F'{letters[letters_index]}{nums}'].alignment = Alignment(horizontal='center')
-            # #sheet[F'{letters[letters_index]}{nums}'].alignment = Alignment(wrap_text=True)
-            # sheet[F'{letters[letters_index]}{nums}'].alignment = Alignment(vertical='center')
-            # letters_index += 1
-        # nums += 1
-################################################################        
-################################################################
+        
+    #################### ГРАНИЦЫ ОБЫЧНЫХ СТРОК: ####################
+    # n = 2
+    # for col in range(n_p_p_count):
+        # for i in area:
+            # #i = sheet['A1']
+            # i.border = thin_border
+            # #n += 1
+    # #print(n_p_p_count)
+    sheet['A2':'A{sheet.max_row-1}'].border = thin_border    
+    ################################################################
+    
+    ################################################################        
+    ################################################################
 
 
 book.save('ТОВАРЫ_ВАШЕГО_ПОСТАВЩИКА.xlsx')
