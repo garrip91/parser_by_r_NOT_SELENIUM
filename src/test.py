@@ -1,10 +1,35 @@
-# from datetime import datetime, date, time
+# import json
 
 
-# new_format = "%Y-%m-%d"
-# print(datetime.strftime(new_format))
-import datetime
-
-
-#dt_obj = datetime.date.today().strftime('08.06.2011','%d/%m/%Y')
-print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+# with open("products.json", "r", encoding="UTF-8") as output:
+    # data = json.load(output)
+    # print(len(data))    
+    
+list_for_products_count = []    
+with open("products.txt", "r", encoding="UTF-8") as f:
+    for line in f.readlines():
+        if line == "\n":
+            continue
+        else:
+            list_for_products_count.append(line)
+    #print(len(list_for_products_count))
+    print(list_for_products_count)
+    
+# list_for_data_count = []    
+# with open("data.txt", "r", encoding="UTF-8") as f:
+    # for line in f.readlines():
+        # if line == "\n":
+            # continue
+        # else:
+            # list_for_data_count.append(line)
+    # print(len(list_for_data_count))
+    
+    
+# list_for_data_count = []    
+# with open("data.txt", "r", encoding="UTF-8") as f:
+    # for line in f.readlines():
+        # if line == "\n":
+            # continue
+        # else:
+            # list_for_data_count.append(line)
+    # print(len(set(list_for_data_count)))
