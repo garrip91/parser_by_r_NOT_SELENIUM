@@ -60,15 +60,18 @@ area = [
     sheet['F1']
 ]
 
-################# ГРАНИЦЫ ЗАГОЛОВОЧНОЙ СТРОКИ: #################
+################# 1. ГРАНИЦЫ ЗАГОЛОВОЧНОЙ СТРОКИ: #################
 for cell in area:
     cell.border = thick_border
-################################################################
+############################### 1.- ###############################
 
-# with open('data.txt', 'r', encoding='UTF-8') as source:
-with open('data_for_check.txt', 'r', encoding='UTF-8') as source:
+######### 2. ОТКРЫВАЕМ ИСХОДНЫЙ ФАЙЛ С ДАННЫМИ НА ЧТЕНИЕ: #########
+# with open('data_for_check.txt', 'r', encoding='UTF-8') as source:
+with open('data.txt', 'r', encoding='UTF-8') as source:
     #print(source.readlines())
-    
+############################### 2.- ###############################
+
+    ######## 3. ЦИКЛОМ ЗАПИСЫВАЕМ ДАННЫЕ ПО ВСЕМ ТОВАРАМ, ВКЛЮЧАЯ ПОРЯДКОВЫЙ НОМЕР КАЖДОГО ТОВАРА: ########
     nums = 2
     letters = ['A', 'B', 'C', 'D', 'E', 'F']
     n_p_p = 1
@@ -91,50 +94,53 @@ with open('data_for_check.txt', 'r', encoding='UTF-8') as source:
         
     n_p_p_count = sheet.max_row-1
     #print(n_p_p_count)
-    
+    ################################################# 3.- #################################################
+
+    ############################ 4. ВЫДЕЛЯЕМ ЗАГОЛОВОЧНУЮ СТРОКУ ЖИРНЫМ ШРИФТОМ: ##########################
     n = 2
     for i in range(n_p_p_count):
         #print(type(i))
         #print(i)
         sheet[F'A{n}'].font = Font(bold=True)
         n += 1
-        
-    ################################################################        
-    ################################################################      
+    ################################################# 4.- #################################################
+                    
+    ################## 5. УДАЛЯЕМ ВСЕ НАШИ ПЕРЕМЕННЫЕ ИЗ ОЗУ: ##################
     del nums
     del letters
     del n_p_p
     del nums_insert
     del letters_index
-
+    ################################ 5.- #######################################        
+    
+    ######################### 6. ВЫРАВНИВАЕМ ПО ЦЕНТРУ СОДЕРЖИМОЕ КАЖДОЙ ЯЧЕЙКИ: ##########################
     nums = 2
     letters = ['A', 'B', 'C', 'D', 'E', 'F']
     n_p_p = 1
     nums_insert = 1
-    for i in range(sheet.max_row):
+    #for i in range(sheet.max_row):
+    for i in range(sheet.max_column):
         nums_insert += 1
         letters_index = 0
-        for j in range(sheet.max_column):
+        for j in range(len(letters)):
             #sheet[F'{letters[letters_index]}{nums}'].alignment = Alignment(horizontal='center')
             sheet[F'{letters[letters_index]}{nums}'].alignment = Alignment(wrap_text=True)
             #sheet[F'{letters[letters_index]}{nums}'].alignment = Alignment(vertical='center')
+#            sheet[F'A{letters[letters_index]}{nums}'].border = thin_border
             letters_index += 1
         nums += 1
-        
-    #################### ГРАНИЦЫ ОБЫЧНЫХ СТРОК: ####################
-    # n = 2
-    # for col in range(n_p_p_count):
-        # for i in area:
-            # #i = sheet['A1']
-            # i.border = thin_border
-            # #n += 1
-    # #print(n_p_p_count)
-    sheet['A2':'A{sheet.max_row-1}'].border = thin_border    
-    ################################################################
-    
-    ################################################################        
-    ################################################################
+    #######################################################################################################
+            
+    ############### 5. СНОВА УДАЛЯЕМ ВСЕ НАШИ ПЕРЕМЕННЫЕ ИЗ ОЗУ: ###############
+    del nums
+    del letters
+    del n_p_p
+    del nums_insert
+    del letters_index
+    ################################ 5.- #######################################        
 
+
+# sheet['A20'].border = thin_border - пример для одной ячейки
 
 book.save('ТОВАРЫ_ВАШЕГО_ПОСТАВЩИКА.xlsx')
 book.close()

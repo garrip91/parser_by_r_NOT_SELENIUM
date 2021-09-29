@@ -1,9 +1,10 @@
-c = 0
-with open('products.txt', 'r', encoding='UTF-8') as f:
-    for line in f.readlines():
-        if line == "\n":
-            continue
-        else:
-            c += 1
-        
-print(c)
+# from datetime import datetime, date, time
+
+
+# new_format = "%Y-%m-%d"
+# print(datetime.strftime(new_format))
+import datetime
+
+
+#dt_obj = datetime.date.today().strftime('08.06.2011','%d/%m/%Y')
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
