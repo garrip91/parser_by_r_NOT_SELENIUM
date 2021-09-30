@@ -13,28 +13,20 @@ import json
         # else:
             # line = line.replace('\n', '')
             # list_for_products_count.append(line)
-    #print(len(list_for_products_count))
+    # print(len(set(list_for_products_count)))
         
-with open("data.txt", "r", encoding="UTF-8") as f:
-    set_for_data_count = set()
+with open("data_result.txt", "r", encoding="UTF-8") as f:
+    
+    #list_for_data_count = []
     for line in f.readlines():
         if line == "\n":
             continue
         else:
-            line = line.split(' || ')
-            set_for_data_count.add(line)
-    print(set_for_data_count[:5])
-
-    # list_for_data_articles_count = []
+            #line = line.split(' || ')
+            #list_for_data_count.append(line)
+            print(line)
+    #new_list_for_data_count = []
+#    for_in_for = [print(line[2]) for line in list_for_data_count for j in line]
     # for i in list_for_data_count:
-        # list_for_data_articles_count.append(i[2])
-    # list_for_data_articles_count = set(list_for_data_articles_count)
-    # list_for_data_articles_count = list(list_for_data_articles_count)
-    # #print(list(list_for_data_articles_count)[0])
-    
-    # list_for_NEW_data_count = [[None, None, None, None, None]]
-    # for i in list_for_data_count:
-        # if i[2] in list_for_data_articles_count:
-            # if list_for_NEW_data_count[-1][2] != i[2]:
-                # list_for_NEW_data_count.append(i)
-    # print(len(list_for_NEW_data_count))
+        # new_list_for_data_count.append(i[2])
+    # #print(len(set(new_list_for_data_count)))
