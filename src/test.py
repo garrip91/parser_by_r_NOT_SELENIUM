@@ -1,32 +1,48 @@
-import json
+from datetime import datetime
 
 
-# with open("products.json", "r", encoding="UTF-8") as output:
-    # data = json.load(output)
-    # print(len(data))    
+data_set = set()
+articles_set = set()
+
+with open("data.txt", "r", encoding="UTF-8") as f:
     
-# list_for_products_count = []    
-# with open("products.txt", "r", encoding="UTF-8") as f:
-    # for line in f.readlines():
-        # if line == "\n":
-            # continue
-        # else:
-            # line = line.replace('\n', '')
-            # list_for_products_count.append(line)
-    # print(len(set(list_for_products_count)))
-        
-with open("data_result.txt", "r", encoding="UTF-8") as f:
-    
-    #list_for_data_count = []
     for line in f.readlines():
         if line == "\n":
             continue
         else:
-            #line = line.split(' || ')
-            #list_for_data_count.append(line)
-            print(line)
-    #new_list_for_data_count = []
-#    for_in_for = [print(line[2]) for line in list_for_data_count for j in line]
-    # for i in list_for_data_count:
-        # new_list_for_data_count.append(i[2])
-    # #print(len(set(new_list_for_data_count)))
+            line_list = line.split(' || ')
+            data_set.add(line)    
+            articles_set.add(line_list[2])
+            
+    # print(type(data_set))
+    # print(len(data_set))
+    # print(type(articles_set))
+    # print(len(articles_set))
+    
+
+data_list = list(data_set)
+articles_list = list(articles_set)
+
+# print(type(data_list))
+# print(len(data_list))
+print(data_list[0])
+# print(type(articles_list))
+# print(len(articles_list))
+# print(articles_list[0])
+    
+    
+with open("unique_data.txt", "a", encoding="UTF-8") as f:
+        
+    for line1 in data_list:
+        for line2 in articles_list:
+            if line2 in line1:
+                f.write(line1)
+                del articles_list[articles_list.index(line2)]
+                print(len(articles_list))
+            else:
+                print(len(articles_list))
+            #f.write(F'{line}\n')
+        
+    # print(type(articles_list))
+    # print(len(articles_list))
+        
