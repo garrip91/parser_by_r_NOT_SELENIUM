@@ -13,22 +13,10 @@ with open("data.txt", "r", encoding="UTF-8") as f:
             line_list = line.split(' || ')
             data_set.add(line)    
             articles_set.add(line_list[2])
-            
-    # print(type(data_set))
-    # print(len(data_set))
-    # print(type(articles_set))
-    # print(len(articles_set))
-    
-
+      
+      
 data_list = list(data_set)
 articles_list = list(articles_set)
-
-# print(type(data_list))
-# print(len(data_list))
-print(data_list[0])
-# print(type(articles_list))
-# print(len(articles_list))
-# print(articles_list[0])
     
     
 with open("unique_data.txt", "a", encoding="UTF-8") as f:
@@ -41,8 +29,4 @@ with open("unique_data.txt", "a", encoding="UTF-8") as f:
                 print(len(articles_list))
             else:
                 print(len(articles_list))
-            #f.write(F'{line}\n')
-        
-    # print(type(articles_list))
-    # print(len(articles_list))
         
