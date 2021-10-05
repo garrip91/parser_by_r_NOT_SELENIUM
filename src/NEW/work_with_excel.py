@@ -66,27 +66,16 @@ for cell in area:
 ############################### 1.- ###############################
 
 ######### 2. ОТКРЫВАЕМ ИСХОДНЫЙ ФАЙЛ С ДАННЫМИ НА ЧТЕНИЕ: #########
-with open('data.txt', 'r', encoding='UTF-8') as source:
+with open('RESULT.txt', 'r', encoding='UTF-8') as source:
 ############################### 2.- ###############################
 
-    list_for_data_count = []    
-    with open("data.txt", "r", encoding="UTF-8") as f:
-        for line in f.readlines():
-            if line == "\n":
-                continue
-            else:
-                list_for_data_count.append(line.split(' || '))
-        list_for_data_count = set(list_for_NEW_data_count)
-
-    list_for_data_articles_count = []
-    for i in list_for_data_count:
-        list_for_data_articles_count.append(i[2])
-    list_for_data_articles_count = set(list_for_data_articles_count)
-    
-    list_for_NEW_data_count = []
-    for i in list_for_data_count:
-        if i[2] in list_for_data_articles_count:
-            if 
+    # data_list = []    
+    # with open("RESULT.txt", "r", encoding="UTF-8") as f:
+        # for line in f.readlines():
+            # if line == "\n":
+                # continue
+            # else:
+                # data_list.append(line.split(' || '))
 
     ######## 3. ЦИКЛОМ ЗАПИСЫВАЕМ ДАННЫЕ ПО ВСЕМ ТОВАРАМ, ВКЛЮЧАЯ ПОРЯДКОВЫЙ НОМЕР КАЖДОГО ТОВАРА: ########
     nums = 2
