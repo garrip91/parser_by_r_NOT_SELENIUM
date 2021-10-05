@@ -3,19 +3,47 @@ from datetime import datetime
 import openpyxl
 
 
-#book = openpyxl.Workbook()
-book = openpyxl.open('ТОВАРЫ_ВАШЕГО_ПОСТАВЩИКА_выбранные.xlsx', read_only=True)
+book = openpyxl.open('ПРИОРИТЕТ № 1.xlsx')
 sheets = book.sheetnames
 sheet = book[sheets[0]]
 
-#print(sheet['B2':'C4'])
-print(sheet.max_row)
-print('\n')
-print(sheet.max_column)
-# for line in range():
+# for cell in sheet['2']:
+    # print(cell.value)
+
+# c = 0
+# for cell in needed:
+    # v = cell.value
+    # c += 1
+# print(c)
+
+rows = sheet.max_row
+cols = sheet.max_column
+correct_lines = []
+for i in range(2, rows + 1):
+    correct_line = []
+    for j in range(1, cols + 1):
+        cell = sheet.cell(row = i, column = j)
+        correct_line.append(str(cell.value).strip())
+    correct_lines.append(correct_line)
+
+with open("unique_data_NEW.txt", 'a', encoding='UTF-8') as f2:
+    for line in correct_lines:
+        f2.write(F'{str(line).strip("[]")}\n')
+    
 
 
+    
+    
+    
+    
+
+    
+    
 book.close()
+
+
+
+
 # data_set = set()
 
 # with open("unique_data.txt", "r", encoding="UTF-8") as f:
