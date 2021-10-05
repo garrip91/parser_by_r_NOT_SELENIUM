@@ -19,7 +19,7 @@ def main():
                 result.add(line)
 
     # Открываем файл, куда запишем результаты
-    with open("unique_results.txt", "w", encoding="UTF-8") as file:
+    with open("RESULT.txt", "w", encoding="UTF-8") as file:
         # Проходимся по каждой отобранной строке
         for line in result:
             # Записываем строку
