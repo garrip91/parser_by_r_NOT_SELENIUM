@@ -1,19 +1,25 @@
-#data_set = set()
-articles_set = set()
-
-with open("data.txt", "r", encoding="UTF-8") as f1:
+with open("unique_data.txt", "r", encoding="UTF-8") as f1:
     
-    articles = []
+    data = []
+    result = []
     for line in f1.readlines():
         if line == "\n":
             continue
         else:
-            line = line.split(', ')
-            print(line)
-    #print(len(articles_set))
+            data.append(line)
+            # with open("unique_titles.txt", "r", encoding="UTF-8") as f2:
+                # for i in f2.readlines():
+                    # if i == "\n":
+                        # continue
+                    # else:
+                        # if i in line:
+                            # #result.append(line)
+                            # with open("RESULT.txt", "a", encoding="UTF-8") as f3:
+                                # f3.write(F'{line}\n')
+            
+    print(data[:5])
+    #print(result)
       
-# data_list = list(data_set)
-# articles_list = list(articles_set)
     
     
 # with open("unique_data.txt", "a", encoding="UTF-8") as f:
