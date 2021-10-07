@@ -69,6 +69,8 @@ for cell in area:
 with open('RESULT.txt', 'r', encoding='UTF-8') as source:
 ############################### 2.- ###############################
 
+<<<<<<< HEAD
+=======
     # data_list = []    
     # with open("RESULT.txt", "r", encoding="UTF-8") as f:
         # for line in f.readlines():
@@ -77,6 +79,7 @@ with open('RESULT.txt', 'r', encoding='UTF-8') as source:
             # else:
                 # data_list.append(line.split(' || '))
 
+>>>>>>> d209fd4816631c03ad44e8a0f9923731f7d85ab4
     ######## 3. ЦИКЛОМ ЗАПИСЫВАЕМ ДАННЫЕ ПО ВСЕМ ТОВАРАМ, ВКЛЮЧАЯ ПОРЯДКОВЫЙ НОМЕР КАЖДОГО ТОВАРА: ########
     nums = 2
     letters = ['A', 'B', 'C', 'D', 'E', 'F']
@@ -85,6 +88,18 @@ with open('RESULT.txt', 'r', encoding='UTF-8') as source:
     for line in source:
         line = line.replace('\n', '')
         result = line.split(' || ')
+<<<<<<< HEAD
+        result[3] = float(result[3])
+        result[3] = result[3] - (result[3] * 5 / 100)
+        #result[3] = round(result[3], 2)
+        if result[3].is_integer():
+            result[3] = format(result[3], '.2f')
+        elif len(str(result[3])[str(result[3]).find(".")+1:]) == 1:
+            result[3] = str(result[3]) + "0"
+        elif len(str(result[3])[str(result[3]).find(".")+1:]) > 2:
+            result[3] = str(result[3])[:str(result[3]).find(".")+3]
+=======
+>>>>>>> d209fd4816631c03ad44e8a0f9923731f7d85ab4
         result.insert(0, nums_insert)
         #print(result)
         nums_insert += 1
@@ -148,5 +163,9 @@ with open('RESULT.txt', 'r', encoding='UTF-8') as source:
 
 # sheet['A20'].border = thin_border - пример для одной ячейки
 
+<<<<<<< HEAD
+book.save('07.10.2021.xlsx')
+=======
 book.save('ТОВАРЫ_ВАШЕГО_ПОСТАВЩИКА.xlsx')
+>>>>>>> d209fd4816631c03ad44e8a0f9923731f7d85ab4
 book.close()
