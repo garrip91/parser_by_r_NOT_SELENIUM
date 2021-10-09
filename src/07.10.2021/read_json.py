@@ -12,16 +12,25 @@ with open('products_test.json', 'r', encoding='UTF-8') as f:
     data = json.load(f)
     # ПРОХОДИМ ЦИКЛОМ ПО ВСЕМ ТОВАРАМ:
     categories_list = []
+    # ДЛЯ КАЖДОГО ТОВАРА:
     for product in data:
+        # ПОУЧАЕМ КАТЕГОРИЮ С ПОДКАТЕГОРИЯМИ:
         categories = product.get("category")
+        # ПОЛУЧАЕМ АРТИКУЛЫ:
         article = product.get("article")
+        # ПОЛУЧАЕМ ХАРАКТЕРИСТИКИ:
         attributes = product.get("attributes")
         
+        # ЕСЛИ КАТЕГОРИЯ С ПОДКАТЕГОРИЯМИ ИМЕЕТСЯ...:
         if categories is not None:
             category_list = []
+            # ...ТО РЕВЕРСИРУЕМ ИХ, ЧТОБЫ ПОЛУЧИЛОСЬ ОТ ОБЩЕГО К ЧАСТНОМУ...:
             for category in reversed(categories):
+                # ...И ДОБАВЛЯЕМ ИХ В ОТДЕЛЬНЫЙ ПОДСПИСОК:
                 category_list.append(category)
+            # ...ПОСЛЕ ЧЕГО ДОБАВЛЯЕМ ЭТОТ ОТДЕЛЬНЫЙ ПОДСПИСОК В ГЛАВНЫЙ СПИСОК:    
             categories_list.append(category_list)
+            # ...ПОСЛЕ ЧЕГО ОПУСТОШАЕМ ПОДСПИСОК ДЛЯ ДОБАВЛЕНИЯ СЛЕДУЮЩИХ КАТЕГОРИИ И ПОДКАТЕГОРИЙ:
             category_list = []
     print(categories_list)
     print(category_list)
