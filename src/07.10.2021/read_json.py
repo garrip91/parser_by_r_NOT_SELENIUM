@@ -37,7 +37,8 @@ with open('products.json', 'r', encoding='UTF-8') as f:
                         # ...ДОБАВЛЯЕМ ИХ В ЭТОТ ПОДСПИСОК:
                         category_list.append(category)
                     # ...ДУБЛИРУЕМ ПЕРВУЮ КАТЕГОРИЮ ИЗ ЭТОГО ПОДСПИСКА В СПИСКЕ ГЛАВНЫХ КАТЕГОРИЙ, ПОСЛЕ ЧЕГО...:
-                    _MAIN_CATEGORY_.append(category_list[0])
+                    print(category_list[0])
+                    #_MAIN_CATEGORY_.append(category_list[0])
                     # ...УДАЛЯЕМ ЭТУ ПЕРВУЮ КАТЕГОРИЮ ИЗ ПОДСПИСКА:
                     del category_list[0]
                     # ...ПОСЛЕ ЧЕГО ДОБАВЛЯЕМ ЭТОТ ОТДЕЛЬНЫЙ ПОДСПИСОК В ГЛАВНЫЙ СПИСОК:    
