@@ -101,6 +101,9 @@ def load_all_products(parser: OptiComParser):
 
     products_data = []
     with open("products.txt", "r", encoding="UTF-8") as file:
+        c = 1
+        #s = len(file.readlines())
+        s = 3779
         for line in file.readlines():
             product_id = int(line.strip())
             product_dict = parser.parse_product(product_id)
@@ -110,8 +113,11 @@ def load_all_products(parser: OptiComParser):
 
             categories = []
             category_id = product_dict["subcategory"]
-
-            print(f"https://api.opti-com.ru/v1.1/catalog/product/{product_dict['id']}")
+            
+            #print(F'{c}/{s}')
+            #print(f"[{c}/{s}] https://api.opti-com.ru/v1.1/catalog/product/{product_dict['id']}")
+            print(f"[{c}/{s}] https://api.opti-com.ru/v1.1/catalog/product/{product_dict['id']}")
+            c += 1
 
             while subcategory := find(tree, category_id):
                 categories.append(subcategory.name)
