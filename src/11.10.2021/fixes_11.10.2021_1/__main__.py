@@ -24,7 +24,7 @@ def to_plain(data: dict) -> dict:
     return {
         "_ID_": data["id"],
         "_MAIN_CATEGORY_": data["category"][-1] if len(data["category"]) else "",
-        "_CATEGORY_": "|".join(data["category"][:-1]),
+        "_CATEGORY_": "|".join(reversed(data["category"][:-1])),
         "_NAME_": data["title"],
         "_SKU_": data["article"],
         "_MANUFACTURER_": f"{brand} ({country})",
